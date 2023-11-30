@@ -7,7 +7,7 @@ public class Application {
     public static final int LOTTO_NUMBER_DIGIT = 6;
 
     public static void main(String[] args) {
-
+        PurchasePrice purchasePrice = InputView.inputPurchasePrice();
 
     }
 }
