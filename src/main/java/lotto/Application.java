@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Application {
     public static final int LOTTO_PRICE_UNIT = 1000;
-    public static final int LOTTO_NUMBER_RANGE_MIN = 1;
-    public static final int LOTTO_NUMBER_RANGE_MAX = 45;
+    public static final int LOTTO_NUMBER_MIN = 1;
+    public static final int LOTTO_NUMBER_MAX = 45;
     public static final int LOTTO_NUMBER_DIGIT = 6;
 
     public static void main(String[] args) {
@@ -17,6 +17,8 @@ public class Application {
 
         List<Lotto> lottos = issueLotto(purchaseCount);
         OutputView.printPurchaseLotto(lottos);
+
+        WinningNumber winningNumber = InputView.inputWinningNumberAndBonusNumber();
     }
 
     private static List<Lotto> issueLotto(int purchaseCount) {
@@ -29,7 +31,8 @@ public class Application {
     }
 
     private static Lotto purchaseLotto() {
-        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_RANGE_MIN, LOTTO_NUMBER_RANGE_MAX, LOTTO_NUMBER_DIGIT);
+        List<Integer> randomNumbers = Randoms.pickUniqueNumbersInRange(LOTTO_NUMBER_MIN, LOTTO_NUMBER_MAX,
+                LOTTO_NUMBER_DIGIT);
         List<LottoNumber> lottoNumbers = new ArrayList<>();
         for (Integer randomNumber : randomNumbers) {
             LottoNumber lottoNumber = new LottoNumber(randomNumber);
