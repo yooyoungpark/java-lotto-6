@@ -18,4 +18,8 @@ public class PurchasePrice {
     public int getPrice() {
         return price;
     }
+
+    public int getPurchaseCount() {
+        return price / LOTTO_PRICE_UNIT;
+    }
 }

@@ -8,7 +8,7 @@ public class InputView {
             System.out.println("구입금액을 입력해 주세요.");
             String input = Console.readLine();
             return new PurchasePrice(inputToNumber(input));
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             OutputView.printError(e.getMessage());
             return inputPurchasePrice();
         }
