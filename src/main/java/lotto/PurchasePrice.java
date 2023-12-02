@@ -22,4 +22,8 @@ public class PurchasePrice {
     public int getPurchaseCount() {
         return price / LOTTO_PRICE_UNIT;
     }
+
+    public double getRateOfReturn(int earnMoney) {
+        return (price - (price - earnMoney)) / (double) price * 100;
+    }
 }

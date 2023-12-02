@@ -36,4 +36,13 @@ public class Lotto {
     public List<LottoNumber> getNumbers() {
         return numbers;
     }
+
+    public List<Integer> getNumbersValue() {
+        List<Integer> values = new ArrayList<>();
+        for (LottoNumber lottoNumber : numbers) {
+            int number = lottoNumber.getNumber();
+            values.add(number);
+        }
+        return values;
+    }
 }

@@ -16,38 +16,29 @@ public class InputView {
         }
     }
 
-    public static int inputToNumber(String input) {
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("숫자만 입력해 주세요");
-        }
-    }
-
     public static WinningNumber inputWinningNumberAndBonusNumber() {
         try {
             List<LottoNumber> winningNumbers = inputWinningNumber();
             LottoNumber bonusNumber = inputBonusNumber();
-            WinningNumber winningNumber = new WinningNumber(winningNumbers, bonusNumber);
-            return winningNumber;
+            return new WinningNumber(winningNumbers, bonusNumber);
         } catch (IllegalArgumentException e) {
             OutputView.printError(e.getMessage());
             return inputWinningNumberAndBonusNumber();
         }
     }
 
-    public static List<LottoNumber> inputWinningNumber() {
-        System.out.println("당첨 번호를 입력해 주세요.");
+    private static List<LottoNumber> inputWinningNumber() {
+        System.out.println("\n당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
-        List<LottoNumber> winningNumbers = new ArrayList<>();
+        List<LottoNumber> lottoNumbers = new ArrayList<>();
         for (String inputSplit : input.split(",")) {
-            LottoNumber winningNumber = new LottoNumber(inputToNumber(inputSplit));
-            winningNumbers.add(winningNumber);
+            LottoNumber lottoNumber = new LottoNumber(inputToNumber(inputSplit));
+            lottoNumbers.add(lottoNumber);
         }
-        return winningNumbers;
+        return lottoNumbers;
     }
 
-    public static LottoNumber inputBonusNumber() {
+    private static LottoNumber inputBonusNumber() {
         try {
             System.out.println("\n보너스 번호를 입력해 주세요.");
             String input = Console.readLine();
@@ -56,6 +47,14 @@ public class InputView {
         } catch (IllegalArgumentException e) {
             OutputView.printError(e.getMessage());
             return inputBonusNumber();
+        }
+    }
+
+    private static int inputToNumber(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("숫자만 입력해 주세요");
         }
     }
 }
