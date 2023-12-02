@@ -65,7 +65,7 @@ public class Application {
         int bonusNumber = winningNumber.getBonusNumberValue();
 
         int sameCount = 0;
-        for (Integer lottoNumber : lottoNumbers) {
+        for (int lottoNumber : lottoNumbers) {
             if (winningNumbers.contains(lottoNumber)) {
                 sameCount++;
             }
